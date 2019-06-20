@@ -10,6 +10,18 @@ describe("<Dashboard />", () => {
     it("renders successfully", () => {
         render(<Dashboard />);
     });
+    it('matches the snapshot', () => {
+        const { container }= render(<Dashboard />); 
+        expect(container.firstChild).toMatchSnapshot(); 
+    });
+    //making sure that controls and displays render
+    it('renders controls and display', () => {
+        render(<Dashboard />);
+        // everything that is not 0, “”, null, undefined, NaN or false is truthy.
+        expect(document.querySelector('.controls')).toBeTruthy();
+        expect(document.querySelector('.display')).toBeTruthy(); 
+    });
+
     it("gate opens and closes successfully when unlocked", () => {
         const { getByText } = render(<Dashboard />);
         const gate = getByText(/Close/); 
@@ -49,4 +61,5 @@ describe("<Dashboard />", () => {
         getByText(/Locked/);
         getByText(/Closed/);
     })
+    
 });
