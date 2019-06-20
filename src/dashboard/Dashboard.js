@@ -14,7 +14,9 @@ class Dashboard extends React.Component {
 
     return (
       <>
+        {/* passing default state down as props */}
         <Display locked={locked} closed={closed} />
+        {/* passing default state and toggle functions as props */}
         <Controls
           locked={locked}
           closed={closed}
@@ -25,12 +27,16 @@ class Dashboard extends React.Component {
     );
   }
 
+// Toggle Functions
+
   toggleLocked = () => {
     this.setState(prev => ({ locked: !prev.locked }));
+  // updating locked to true based on the previous state condition
   };
 
   toggleClosed = () => {
     this.setState(prev => ({ closed: !prev.closed }));
+    // updating closed to true based on the previous state condition
   };
 }
 
